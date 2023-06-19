@@ -1,0 +1,410 @@
+<pre>hi its me, 🐣the smol developer🐣! you said you wanted:
+<span style="color:#8AE234">This project is a naming scheme generator.</span>
+<span style="color:#8AE234">It has to be subject to the following tech stack:</span>
+<span style="color:#8AE234">1. Programming language: wherever possible, but not limited to python</span>
+<span style="color:#8AE234">It has to be subject to the following specification:</span>
+<span style="color:#8AE234">1. Having an importable and callable method in python that returns a random name</span>
+<span style="color:#8AE234">2. Said name has to be a pair of an adjective and a noun starting with the same letter to the likes of docker container naming convention</span>
+<span style="color:#8AE234">3. Adjective and noun have to be of specific theme. Default themes should emotional description, e.g. dramatic for adjective and an abstract entity like manifold for noun.</span>
+<span style="color:#8AE234">4. Apart from the default themes, theme pair should be customizable by providing a json with list of available options per each letter of the English alphabet. Providing the json can be constrained to a certain folder inside the project structure.</span>
+<span style="color:#8AE234">5. it has to have tests, evaluating extensiveness of fulfilling the above specifications</span>
+<span style="color:#D3D7CF">86 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">185 tokens</span> in prompt: <span style="color:#8AE234">This project is a naming scheme generator.</span>
+<span style="color:#8AE234">It has </span>
+[
+    &quot;naming_scheme_generator/__init__.py&quot;,
+    &quot;naming_scheme_generator/generator.py&quot;,
+    &quot;naming_scheme_generator/themes/default_theme.json&quot;,
+    &quot;naming_scheme_generator/themes/__init__.py&quot;,
+    &quot;naming_scheme_generator/themes/custom_theme_example.json&quot;,
+    &quot;tests/__init__.py&quot;,
+    &quot;tests/test_generator.py&quot;,
+    &quot;tests/test_themes.py&quot;
+]
+<span style="color:#D3D7CF">144 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">185 tokens</span> in prompt: <span style="color:#8AE234">This project is a naming scheme generator.</span>
+<span style="color:#8AE234">It has </span>
+the app is: naming scheme generator
+
+the files we have decided to generate are: main.py, themes.py, custom_themes.py, test_naming_scheme_generator.py
+
+Shared dependencies:
+1. Function names:
+   - generate_name(theme_adjective, theme_noun)
+   - load_custom_theme(file_path)
+2. Data schemas:
+   - Theme (adjectives: List[str], nouns: List[str])
+   - CustomTheme (file_path: str, theme: Theme)
+3. Exported variables:
+   - default_theme (instance of Theme)
+4. JSON structure for custom themes:
+   - { &quot;A&quot;: { &quot;adjectives&quot;: [&quot;adjective1&quot;, &quot;adjective2&quot;], &quot;nouns&quot;: [&quot;noun1&quot;, &quot;noun2&quot;] }, &quot;B&quot;: {...}, ... }
+5. Test function names:
+   - test_generate_name_default_theme()
+   - test_generate_name_custom_theme()
+   - test_load_custom_theme()
+<span style="color:#729FCF">shared_dependencies.md</span>
+the app is: naming scheme generator
+
+the files we have decided to generate are: main.py, themes.py, custom_themes.py, test_naming_scheme_generator.py
+
+Shared dependencies:
+1. Function names:
+   - generate_name(theme_adjective, theme_noun)
+   - load_custom_theme(file_path)
+2. Data schemas:
+   - Theme (adjectives: List[str], nouns: List[str])
+   - CustomTheme (file_path: str, theme: Theme)
+3. Exported variables:
+   - default_theme (instance of Theme)
+4. JSON structure for custom themes:
+   - { &quot;A&quot;: { &quot;adjectives&quot;: [&quot;adjective1&quot;, &quot;adjective2&quot;], &quot;nouns&quot;: [&quot;noun1&quot;, &quot;noun2&quot;] }, &quot;B&quot;: {...}, ... }
+5. Test function names:
+   - test_generate_name_default_theme()
+   - test_generate_name_custom_theme()
+   - test_load_custom_theme()
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">357 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">naming_scheme_generator/__init__.py</span>
+from .generator import generate_name, load_custom_theme
+from .themes import default_theme
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">355 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">naming_scheme_generator/generator.py</span>
+import random
+from typing import Dict, List
+from .themes import default_theme
+
+def generate_name(theme_adjective: Dict[str, List[str]], theme_noun: Dict[str, List[str]]) -&gt; str:
+    letter = random.choice(list(theme_adjective.keys()))
+    adjective = random.choice(theme_adjective[letter])
+    noun = random.choice(theme_noun[letter])
+    return f&quot;{adjective}_{noun}&quot;
+
+def load_custom_theme(file_path: str) -&gt; Dict[str, List[str]]:
+    with open(file_path, &quot;r&quot;) as file:
+        custom_theme = json.load(file)
+    return custom_theme
+
+def generate_name_with_theme(theme: str = &quot;default&quot;) -&gt; str:
+    if theme == &quot;default&quot;:
+        theme_adjective = default_theme[&quot;adjectives&quot;]
+        theme_noun = default_theme[&quot;nouns&quot;]
+    else:
+        custom_theme = load_custom_theme(theme)
+        theme_adjective = custom_theme[&quot;adjectives&quot;]
+        theme_noun = custom_theme[&quot;nouns&quot;]
+
+    return generate_name(theme_adjective, theme_noun)
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">357 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">naming_scheme_generator/themes/default_theme.json</span>
+{
+  &quot;A&quot;: {
+    &quot;adjectives&quot;: [&quot;anxious&quot;, &quot;amazing&quot;],
+    &quot;nouns&quot;: [&quot;artifact&quot;, &quot;ambience&quot;]
+  },
+  &quot;B&quot;: {
+    &quot;adjectives&quot;: [&quot;bold&quot;, &quot;bitter&quot;],
+    &quot;nouns&quot;: [&quot;boundary&quot;, &quot;balance&quot;]
+  },
+  &quot;C&quot;: {
+    &quot;adjectives&quot;: [&quot;curious&quot;, &quot;calm&quot;],
+    &quot;nouns&quot;: [&quot;concept&quot;, &quot;connection&quot;]
+  },
+  &quot;D&quot;: {
+    &quot;adjectives&quot;: [&quot;dramatic&quot;, &quot;daring&quot;],
+    &quot;nouns&quot;: [&quot;dimension&quot;, &quot;dilemma&quot;]
+  },
+  &quot;E&quot;: {
+    &quot;adjectives&quot;: [&quot;eager&quot;, &quot;elusive&quot;],
+    &quot;nouns&quot;: [&quot;essence&quot;, &quot;energy&quot;]
+  },
+  &quot;F&quot;: {
+    &quot;adjectives&quot;: [&quot;fierce&quot;, &quot;fascinating&quot;],
+    &quot;nouns&quot;: [&quot;foundation&quot;, &quot;flow&quot;]
+  },
+  &quot;G&quot;: {
+    &quot;adjectives&quot;: [&quot;graceful&quot;, &quot;gloomy&quot;],
+    &quot;nouns&quot;: [&quot;growth&quot;, &quot;gravity&quot;]
+  },
+  &quot;H&quot;: {
+    &quot;adjectives&quot;: [&quot;happy&quot;, &quot;harsh&quot;],
+    &quot;nouns&quot;: [&quot;harmony&quot;, &quot;horizon&quot;]
+  },
+  &quot;I&quot;: {
+    &quot;adjectives&quot;: [&quot;intriguing&quot;, &quot;intense&quot;],
+    &quot;nouns&quot;: [&quot;illusion&quot;, &quot;insight&quot;]
+  },
+  &quot;J&quot;: {
+    &quot;adjectives&quot;: [&quot;joyful&quot;, &quot;jaded&quot;],
+    &quot;nouns&quot;: [&quot;journey&quot;, &quot;junction&quot;]
+  },
+  &quot;K&quot;: {
+    &quot;adjectives&quot;: [&quot;keen&quot;, &quot;kind&quot;],
+    &quot;nouns&quot;: [&quot;knowledge&quot;, &quot;kaleidoscope&quot;]
+  },
+  &quot;L&quot;: {
+    &quot;adjectives&quot;: [&quot;lively&quot;, &quot;lonely&quot;],
+    &quot;nouns&quot;: [&quot;landscape&quot;, &quot;limit&quot;]
+  },
+  &quot;M&quot;: {
+    &quot;adjectives&quot;: [&quot;mysterious&quot;, &quot;melancholic&quot;],
+    &quot;nouns&quot;: [&quot;manifold&quot;, &quot;momentum&quot;]
+  },
+  &quot;N&quot;: {
+    &quot;adjectives&quot;: [&quot;nervous&quot;, &quot;noble&quot;],
+    &quot;nouns&quot;: [&quot;narrative&quot;, &quot;notion&quot;]
+  },
+  &quot;O&quot;: {
+    &quot;adjectives&quot;: [&quot;optimistic&quot;, &quot;ominous&quot;],
+    &quot;nouns&quot;: [&quot;origin&quot;, &quot;outcome&quot;]
+  },
+  &quot;P&quot;: {
+    &quot;adjectives&quot;: [&quot;peaceful&quot;, &quot;pensive&quot;],
+    &quot;nouns&quot;: [&quot;perspective&quot;, &quot;paradox&quot;]
+  },
+  &quot;Q&quot;: {
+    &quot;adjectives&quot;: [&quot;quizzical&quot;, &quot;quiet&quot;],
+    &quot;nouns&quot;: [&quot;quandary&quot;, &quot;quintessence&quot;]
+  },
+  &quot;R&quot;: {
+    &quot;adjectives&quot;: [&quot;radiant&quot;, &quot;reserved&quot;],
+    &quot;nouns&quot;: [&quot;reality&quot;, &quot;reflection&quot;]
+  },
+  &quot;S&quot;: {
+    &quot;adjectives&quot;: [&quot;serene&quot;, &quot;sombre&quot;],
+    &quot;nouns&quot;: [&quot;symmetry&quot;, &quot;spectrum&quot;]
+  },
+  &quot;T&quot;: {
+    &quot;adjectives&quot;: [&quot;tranquil&quot;, &quot;tense&quot;],
+    &quot;nouns&quot;: [&quot;transition&quot;, &quot;threshold&quot;]
+  },
+  &quot;U&quot;: {
+    &quot;adjectives&quot;: [&quot;unique&quot;, &quot;unsettling&quot;],
+    &quot;nouns&quot;: [&quot;unity&quot;, &quot;uncertainty&quot;]
+  },
+  &quot;V&quot;: {
+    &quot;adjectives&quot;: [&quot;vibrant&quot;, &quot;vague&quot;],
+    &quot;nouns&quot;: [&quot;vision&quot;, &quot;void&quot;]
+  },
+  &quot;W&quot;: {
+    &quot;adjectives&quot;: [&quot;wistful&quot;, &quot;wonderful&quot;],
+    &quot;nouns&quot;: [&quot;wisdom&quot;, &quot;wholeness&quot;]
+  },
+  &quot;X&quot;: {
+    &quot;adjectives&quot;: [&quot;xenophobic&quot;, &quot;xenial&quot;],
+    &quot;nouns&quot;: [&quot;xenoglossy&quot;, &quot;xenolith&quot;]
+  },
+  &quot;Y&quot;: {
+    &quot;adjectives&quot;: [&quot;yearning&quot;, &quot;youthful&quot;],
+    &quot;nouns&quot;: [&quot;yonder&quot;, &quot;yield&quot;]
+  },
+  &quot;Z&quot;: {
+    &quot;adjectives&quot;: [&quot;zealous&quot;, &quot;zen&quot;],
+    &quot;nouns&quot;: [&quot;zenith&quot;, &quot;zephyr&quot;]
+  }
+}
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">359 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">naming_scheme_generator/themes/__init__.py</span>
+from .default_theme import default_theme
+from .custom_theme_example import custom_theme_example
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">359 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">naming_scheme_generator/themes/custom_theme_example.json</span>
+{
+  &quot;A&quot;: {
+    &quot;adjectives&quot;: [&quot;amazing&quot;, &quot;ambitious&quot;],
+    &quot;nouns&quot;: [&quot;apple&quot;, &quot;ant&quot;]
+  },
+  &quot;B&quot;: {
+    &quot;adjectives&quot;: [&quot;brave&quot;, &quot;bold&quot;],
+    &quot;nouns&quot;: [&quot;bear&quot;, &quot;boat&quot;]
+  },
+  &quot;C&quot;: {
+    &quot;adjectives&quot;: [&quot;creative&quot;, &quot;curious&quot;],
+    &quot;nouns&quot;: [&quot;cat&quot;, &quot;cloud&quot;]
+  },
+  &quot;D&quot;: {
+    &quot;adjectives&quot;: [&quot;determined&quot;, &quot;daring&quot;],
+    &quot;nouns&quot;: [&quot;dog&quot;, &quot;dolphin&quot;]
+  },
+  &quot;E&quot;: {
+    &quot;adjectives&quot;: [&quot;eager&quot;, &quot;energetic&quot;],
+    &quot;nouns&quot;: [&quot;elephant&quot;, &quot;eagle&quot;]
+  },
+  &quot;F&quot;: {
+    &quot;adjectives&quot;: [&quot;fearless&quot;, &quot;friendly&quot;],
+    &quot;nouns&quot;: [&quot;fish&quot;, &quot;fox&quot;]
+  },
+  &quot;G&quot;: {
+    &quot;adjectives&quot;: [&quot;graceful&quot;, &quot;generous&quot;],
+    &quot;nouns&quot;: [&quot;giraffe&quot;, &quot;goat&quot;]
+  },
+  &quot;H&quot;: {
+    &quot;adjectives&quot;: [&quot;happy&quot;, &quot;humble&quot;],
+    &quot;nouns&quot;: [&quot;horse&quot;, &quot;hamster&quot;]
+  },
+  &quot;I&quot;: {
+    &quot;adjectives&quot;: [&quot;intelligent&quot;, &quot;imaginative&quot;],
+    &quot;nouns&quot;: [&quot;iguana&quot;, &quot;island&quot;]
+  },
+  &quot;J&quot;: {
+    &quot;adjectives&quot;: [&quot;joyful&quot;, &quot;jovial&quot;],
+    &quot;nouns&quot;: [&quot;jaguar&quot;, &quot;jellyfish&quot;]
+  },
+  &quot;K&quot;: {
+    &quot;adjectives&quot;: [&quot;kind&quot;, &quot;keen&quot;],
+    &quot;nouns&quot;: [&quot;kangaroo&quot;, &quot;koala&quot;]
+  },
+  &quot;L&quot;: {
+    &quot;adjectives&quot;: [&quot;loving&quot;, &quot;loyal&quot;],
+    &quot;nouns&quot;: [&quot;lion&quot;, &quot;lizard&quot;]
+  },
+  &quot;M&quot;: {
+    &quot;adjectives&quot;: [&quot;magnificent&quot;, &quot;mindful&quot;],
+    &quot;nouns&quot;: [&quot;monkey&quot;, &quot;mountain&quot;]
+  },
+  &quot;N&quot;: {
+    &quot;adjectives&quot;: [&quot;noble&quot;, &quot;nice&quot;],
+    &quot;nouns&quot;: [&quot;narwhal&quot;, &quot;nightingale&quot;]
+  },
+  &quot;O&quot;: {
+    &quot;adjectives&quot;: [&quot;optimistic&quot;, &quot;observant&quot;],
+    &quot;nouns&quot;: [&quot;octopus&quot;, &quot;ostrich&quot;]
+  },
+  &quot;P&quot;: {
+    &quot;adjectives&quot;: [&quot;patient&quot;, &quot;peaceful&quot;],
+    &quot;nouns&quot;: [&quot;penguin&quot;, &quot;panda&quot;]
+  },
+  &quot;Q&quot;: {
+    &quot;adjectives&quot;: [&quot;quick&quot;, &quot;quiet&quot;],
+    &quot;nouns&quot;: [&quot;quail&quot;, &quot;quokka&quot;]
+  },
+  &quot;R&quot;: {
+    &quot;adjectives&quot;: [&quot;resilient&quot;, &quot;respectful&quot;],
+    &quot;nouns&quot;: [&quot;rabbit&quot;, &quot;rhino&quot;]
+  },
+  &quot;S&quot;: {
+    &quot;adjectives&quot;: [&quot;strong&quot;, &quot;sincere&quot;],
+    &quot;nouns&quot;: [&quot;shark&quot;, &quot;sloth&quot;]
+  },
+  &quot;T&quot;: {
+    &quot;adjectives&quot;: [&quot;thoughtful&quot;, &quot;trustworthy&quot;],
+    &quot;nouns&quot;: [&quot;tiger&quot;, &quot;turtle&quot;]
+  },
+  &quot;U&quot;: {
+    &quot;adjectives&quot;: [&quot;unique&quot;, &quot;understanding&quot;],
+    &quot;nouns&quot;: [&quot;unicorn&quot;, &quot;urchin&quot;]
+  },
+  &quot;V&quot;: {
+    &quot;adjectives&quot;: [&quot;vibrant&quot;, &quot;valiant&quot;],
+    &quot;nouns&quot;: [&quot;vulture&quot;, &quot;viper&quot;]
+  },
+  &quot;W&quot;: {
+    &quot;adjectives&quot;: [&quot;wise&quot;, &quot;witty&quot;],
+    &quot;nouns&quot;: [&quot;wolf&quot;, &quot;whale&quot;]
+  },
+  &quot;X&quot;: {
+    &quot;adjectives&quot;: [&quot;xenophilic&quot;, &quot;xenodochial&quot;],
+    &quot;nouns&quot;: [&quot;xerus&quot;, &quot;xenops&quot;]
+  },
+  &quot;Y&quot;: {
+    &quot;adjectives&quot;: [&quot;youthful&quot;, &quot;yielding&quot;],
+    &quot;nouns&quot;: [&quot;yak&quot;, &quot;yellowtail&quot;]
+  },
+  &quot;Z&quot;: {
+    &quot;adjectives&quot;: [&quot;zealous&quot;, &quot;zestful&quot;],
+    &quot;nouns&quot;: [&quot;zebra&quot;, &quot;zephyr&quot;]
+  }
+}
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">353 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">tests/__init__.py</span>
+from tests.test_generator import test_generate_name_default_theme, test_generate_name_custom_theme
+from tests.test_themes import test_load_custom_theme
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">351 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">tests/test_generator.py</span>
+import unittest
+from naming_scheme_generator.generator import generate_name, load_custom_theme
+from naming_scheme_generator.themes import default_theme
+
+class TestGenerator(unittest.TestCase):
+
+    def test_generate_name_default_theme(self):
+        name = generate_name(default_theme.adjectives, default_theme.nouns)
+        self.assertIsNotNone(name)
+        self.assertTrue(isinstance(name, str))
+        self.assertEqual(len(name.split(&quot; &quot;)), 2)
+        self.assertEqual(name.split(&quot; &quot;)[0][0], name.split(&quot; &quot;)[1][0])
+
+    def test_generate_name_custom_theme(self):
+        custom_theme = load_custom_theme(&quot;naming_scheme_generator/themes/custom_theme_example.json&quot;)
+        name = generate_name(custom_theme.adjectives, custom_theme.nouns)
+        self.assertIsNotNone(name)
+        self.assertTrue(isinstance(name, str))
+        self.assertEqual(len(name.split(&quot; &quot;)), 2)
+        self.assertEqual(name.split(&quot; &quot;)[0][0], name.split(&quot; &quot;)[1][0])
+
+    def test_load_custom_theme(self):
+        custom_theme = load_custom_theme(&quot;naming_scheme_generator/themes/custom_theme_example.json&quot;)
+        self.assertIsNotNone(custom_theme)
+        self.assertTrue(hasattr(custom_theme, &quot;adjectives&quot;))
+        self.assertTrue(hasattr(custom_theme, &quot;nouns&quot;))
+
+if __name__ == &apos;__main__&apos;:
+    unittest.main()
+<span style="color:#D3D7CF">550 tokens</span> in prompt: <span style="color:#8AE234">You are an AI developer who is trying to write a p</span>
+<span style="color:#D3D7CF">353 tokens</span> in prompt: 
+<span style="color:#8AE234">    We have broken up the program into per-file g</span>
+<span style="color:#729FCF">tests/test_themes.py</span>
+import json
+import os
+import unittest
+from naming_scheme_generator import generator, themes
+
+class TestThemes(unittest.TestCase):
+
+    def test_load_custom_theme(self):
+        custom_theme_path = &quot;naming_scheme_generator/themes/custom_theme_example.json&quot;
+        custom_theme = themes.load_custom_theme(custom_theme_path)
+        self.assertIsInstance(custom_theme, themes.Theme)
+
+        with open(custom_theme_path, &quot;r&quot;) as f:
+            custom_theme_data = json.load(f)
+
+        for letter, theme_data in custom_theme_data.items():
+            self.assertEqual(custom_theme.adjectives[letter], theme_data[&quot;adjectives&quot;])
+            self.assertEqual(custom_theme.nouns[letter], theme_data[&quot;nouns&quot;])
+
+    def test_generate_name_default_theme(self):
+        default_theme = themes.default_theme
+        generated_name = generator.generate_name(default_theme.adjectives, default_theme.nouns)
+        self.assertIsInstance(generated_name, str)
+        self.assertEqual(len(generated_name.split(&quot; &quot;)), 2)
+
+        adjective, noun = generated_name.split(&quot; &quot;)
+        self.assertEqual(adjective[0], noun[0])
+
+    def test_generate_name_custom_theme(self):
+        custom_theme_path = &quot;naming_scheme_generator/themes/custom_theme_example.json&quot;
+        custom_theme = themes.load_custom_theme(custom_theme_path)
+        generated_name = generator.generate_name(custom_theme.adjectives, custom_theme.nouns)
+        self.assertIsInstance(generated_name, str)
+        self.assertEqual(len(generated_name.split(&quot; &quot;)), 2)
+
+        adjective, noun = generated_name.split(&quot; &quot;)
+        self.assertEqual(adjective[0], noun[0])
+
+if __name__ == &quot;__main__&quot;:
+    unittest.main()
+</pre>

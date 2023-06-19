@@ -1,0 +1,106 @@
+{
+  "A": {
+    "adjectives": ["anxious", "amazing"],
+    "nouns": ["artifact", "ambience"]
+  },
+  "B": {
+    "adjectives": ["bold", "bitter"],
+    "nouns": ["boundary", "balance"]
+  },
+  "C": {
+    "adjectives": ["curious", "calm"],
+    "nouns": ["concept", "connection"]
+  },
+  "D": {
+    "adjectives": ["dramatic", "daring"],
+    "nouns": ["dimension", "dilemma"]
+  },
+  "E": {
+    "adjectives": ["eager", "elusive"],
+    "nouns": ["essence", "energy"]
+  },
+  "F": {
+    "adjectives": ["fierce", "fascinating"],
+    "nouns": ["foundation", "flow"]
+  },
+  "G": {
+    "adjectives": ["graceful", "gloomy"],
+    "nouns": ["growth", "gravity"]
+  },
+  "H": {
+    "adjectives": ["happy", "harsh"],
+    "nouns": ["harmony", "horizon"]
+  },
+  "I": {
+    "adjectives": ["intriguing", "intense"],
+    "nouns": ["illusion", "insight"]
+  },
+  "J": {
+    "adjectives": ["joyful", "jaded"],
+    "nouns": ["journey", "junction"]
+  },
+  "K": {
+    "adjectives": ["keen", "kind"],
+    "nouns": ["knowledge", "kaleidoscope"]
+  },
+  "L": {
+    "adjectives": ["lively", "lonely"],
+    "nouns": ["landscape", "limit"]
+  },
+  "M": {
+    "adjectives": ["mysterious", "melancholic"],
+    "nouns": ["manifold", "momentum"]
+  },
+  "N": {
+    "adjectives": ["nervous", "noble"],
+    "nouns": ["narrative", "notion"]
+  },
+  "O": {
+    "adjectives": ["optimistic", "ominous"],
+    "nouns": ["origin", "outcome"]
+  },
+  "P": {
+    "adjectives": ["peaceful", "pensive"],
+    "nouns": ["perspective", "paradox"]
+  },
+  "Q": {
+    "adjectives": ["quizzical", "quiet"],
+    "nouns": ["quandary", "quintessence"]
+  },
+  "R": {
+    "adjectives": ["radiant", "reserved"],
+    "nouns": ["reality", "reflection"]
+  },
+  "S": {
+    "adjectives": ["serene", "sombre"],
+    "nouns": ["symmetry", "spectrum"]
+  },
+  "T": {
+    "adjectives": ["tranquil", "tense"],
+    "nouns": ["transition", "threshold"]
+  },
+  "U": {
+    "adjectives": ["unique", "unsettling"],
+    "nouns": ["unity", "uncertainty"]
+  },
+  "V": {
+    "adjectives": ["vibrant", "vague"],
+    "nouns": ["vision", "void"]
+  },
+  "W": {
+    "adjectives": ["wistful", "wonderful"],
+    "nouns": ["wisdom", "wholeness"]
+  },
+  "X": {
+    "adjectives": ["xenophobic", "xenial"],
+    "nouns": ["xenoglossy", "xenolith"]
+  },
+  "Y": {
+    "adjectives": ["yearning", "youthful"],
+    "nouns": ["yonder", "yield"]
+  },
+  "Z": {
+    "adjectives": ["zealous", "zen"],
+    "nouns": ["zenith", "zephyr"]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "A": {
+    "adjectives": ["amazing", "ambitious"],
+    "nouns": ["apple", "ant"]
+  },
+  "B": {
+    "adjectives": ["brave", "bold"],
+    "nouns": ["bear", "boat"]
+  },
+  "C": {
+    "adjectives": ["creative", "curious"],
+    "nouns": ["cat", "cloud"]
+  },
+  "D": {
+    "adjectives": ["determined", "daring"],
+    "nouns": ["dog", "dolphin"]
+  },
+  "E": {
+    "adjectives": ["eager", "energetic"],
+    "nouns": ["elephant", "eagle"]
+  },
+  "F": {
+    "adjectives": ["fearless", "friendly"],
+    "nouns": ["fish", "fox"]
+  },
+  "G": {
+    "adjectives": ["graceful", "generous"],
+    "nouns": ["giraffe", "goat"]
+  },
+  "H": {
+    "adjectives": ["happy", "humble"],
+    "nouns": ["horse", "hamster"]
+  },
+  "I": {
+    "adjectives": ["intelligent", "imaginative"],
+    "nouns": ["iguana", "island"]
+  },
+  "J": {
+    "adjectives": ["joyful", "jovial"],
+    "nouns": ["jaguar", "jellyfish"]
+  },
+  "K": {
+    "adjectives": ["kind", "keen"],
+    "nouns": ["kangaroo", "koala"]
+  },
+  "L": {
+    "adjectives": ["loving", "loyal"],
+    "nouns": ["lion", "lizard"]
+  },
+  "M": {
+    "adjectives": ["magnificent", "mindful"],
+    "nouns": ["monkey", "mountain"]
+  },
+  "N": {
+    "adjectives": ["noble", "nice"],
+    "nouns": ["narwhal", "nightingale"]
+  },
+  "O": {
+    "adjectives": ["optimistic", "observant"],
+    "nouns": ["octopus", "ostrich"]
+  },
+  "P": {
+    "adjectives": ["patient", "peaceful"],
+    "nouns": ["penguin", "panda"]
+  },
+  "Q": {
+    "adjectives": ["quick", "quiet"],
+    "nouns": ["quail", "quokka"]
+  },
+  "R": {
+    "adjectives": ["resilient", "respectful"],
+    "nouns": ["rabbit", "rhino"]
+  },
+  "S": {
+    "adjectives": ["strong", "sincere"],
+    "nouns": ["shark", "sloth"]
+  },
+  "T": {
+    "adjectives": ["thoughtful", "trustworthy"],
+    "nouns": ["tiger", "turtle"]
+  },
+  "U": {
+    "adjectives": ["unique", "understanding"],
+    "nouns": ["unicorn", "urchin"]
+  },
+  "V": {
+    "adjectives": ["vibrant", "valiant"],
+    "nouns": ["vulture", "viper"]
+  },
+  "W": {
+    "adjectives": ["wise", "witty"],
+    "nouns": ["wolf", "whale"]
+  },
+  "X": {
+    "adjectives": ["xenophilic", "xenodochial"],
+    "nouns": ["xerus", "xenops"]
+  },
+  "Y": {
+    "adjectives": ["youthful", "yielding"],
+    "nouns": ["yak", "yellowtail"]
+  },
+  "Z": {
+    "adjectives": ["zealous", "zestful"],
+    "nouns": ["zebra", "zephyr"]
+  }
+}

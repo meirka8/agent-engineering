@@ -1,0 +1,106 @@
+{
+  "a": {
+    "adjectives": ["angry", "anxious", "amazing", "awesome", "artistic"],
+    "nouns": ["apple", "arrow", "ant", "airplane", "anchor"]
+  },
+  "b": {
+    "adjectives": ["brave", "beautiful", "bright", "boring", "busy"],
+    "nouns": ["book", "ball", "banana", "butterfly", "beach"]
+  },
+  "c": {
+    "adjectives": ["crazy", "calm", "clever", "creative", "curious"],
+    "nouns": ["cat", "car", "cookie", "cloud", "camera"]
+  },
+  "d": {
+    "adjectives": ["dramatic", "daring", "delightful", "dizzy", "determined"],
+    "nouns": ["dog", "duck", "diamond", "dragon", "desk"]
+  },
+  "e": {
+    "adjectives": ["eager", "energetic", "enthusiastic", "exciting", "excellent"],
+    "nouns": ["elephant", "egg", "earth", "eagle", "engine"]
+  },
+  "f": {
+    "adjectives": ["fierce", "funny", "friendly", "fancy", "fantastic"],
+    "nouns": ["fox", "flower", "fish", "fire", "flag"]
+  },
+  "g": {
+    "adjectives": ["grumpy", "great", "generous", "gentle", "glamorous"],
+    "nouns": ["goat", "guitar", "grape", "globe", "garden"]
+  },
+  "h": {
+    "adjectives": ["happy", "helpful", "honest", "hungry", "hardworking"],
+    "nouns": ["horse", "house", "heart", "hat", "helicopter"]
+  },
+  "i": {
+    "adjectives": ["intelligent", "interesting", "incredible", "inspiring", "impressive"],
+    "nouns": ["ice cream", "island", "iguana", "ink", "instrument"]
+  },
+  "j": {
+    "adjectives": ["jolly", "joyful", "jumpy", "jealous", "jovial"],
+    "nouns": ["jaguar", "jacket", "jellyfish", "jewel", "jet"]
+  },
+  "k": {
+    "adjectives": ["kind", "keen", "knowledgeable", "kooky", "kaleidoscopic"],
+    "nouns": ["kangaroo", "key", "kite", "king", "kitchen"]
+  },
+  "l": {
+    "adjectives": ["lovely", "lively", "lazy", "loud", "lovable"],
+    "nouns": ["lion", "laptop", "lemon", "leaf", "light"]
+  },
+  "m": {
+    "adjectives": ["mysterious", "magical", "magnificent", "messy", "merry"],
+    "nouns": ["monkey", "moon", "mountain", "mushroom", "microphone"]
+  },
+  "n": {
+    "adjectives": ["naughty", "nice", "nervous", "neat", "nutty"],
+    "nouns": ["ninja", "notebook", "nose", "nest", "night"]
+  },
+  "o": {
+    "adjectives": ["optimistic", "outgoing", "outstanding", "odd", "orange"],
+    "nouns": ["owl", "ocean", "octopus", "office", "orchestra"]
+  },
+  "p": {
+    "adjectives": ["playful", "peaceful", "powerful", "pretty", "perfect"],
+    "nouns": ["panda", "piano", "pear", "pencil", "planet"]
+  },
+  "q": {
+    "adjectives": ["quirky", "quick", "quiet", "quaint", "quality"],
+    "nouns": ["quail", "queen", "quilt", "quartz", "question"]
+  },
+  "r": {
+    "adjectives": ["romantic", "reliable", "responsible", "restless", "radiant"],
+    "nouns": ["rabbit", "rainbow", "rose", "rocket", "road"]
+  },
+  "s": {
+    "adjectives": ["silly", "serious", "sensitive", "strong", "sunny"],
+    "nouns": ["snake", "star", "sunflower", "snowman", "shoe"]
+  },
+  "t": {
+    "adjectives": ["thoughtful", "thrilling", "tough", "tired", "terrific"],
+    "nouns": ["tiger", "tree", "train", "turtle", "television"]
+  },
+  "u": {
+    "adjectives": ["unique", "unusual", "upbeat", "unforgettable", "ultimate"],
+    "nouns": ["unicorn", "umbrella", "underwater", "uniform", "universe"]
+  },
+  "v": {
+    "adjectives": ["vibrant", "valiant", "victorious", "vague", "vital"],
+    "nouns": ["vulture", "violin", "volcano", "vegetable", "vehicle"]
+  },
+  "w": {
+    "adjectives": ["witty", "wonderful", "wild", "warm", "wavy"],
+    "nouns": ["wolf", "waterfall", "whale", "window", "watch"]
+  },
+  "x": {
+    "adjectives": ["xenial", "xenophobic", "xeric", "xenodochial", "xanthic"],
+    "nouns": ["xylophone", "x-ray", "xenon", "xylem", "xenopus"]
+  },
+  "y": {
+    "adjectives": ["youthful", "yielding", "yummy", "yellow", "yearning"],
+    "nouns": ["yak", "yacht", "yogurt", "yarn", "yoyo"]
+  },
+  "z": {
+    "adjectives": ["zany", "zealous", "zesty", "zippy", "zen"],
+    "nouns": ["zebra", "zigzag", "zipper", "zoo", "zucchini"]
+  }
+}

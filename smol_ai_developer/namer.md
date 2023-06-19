@@ -1,0 +1,1 @@
+Please write a naming scheme generator function that generates a random name to the likes of running docker containers, consisting of an adjective and a noun, where adjective is an emotional description, e.g. dramatic, and noun is an abstract entity like manifold. I thas to contain up to 7 adjective options for every letter and up to 7 nouns for every letter.

@@ -1,0 +1,2 @@
+from tests.test_generator import test_generate_name_default_theme, test_generate_name_custom_theme
+from tests.test_themes import test_load_custom_theme
