@@ -1,0 +1,143 @@
+diff --git a/smol_ai_developer/generated_namer2/naming_scheme_generator/generator.py b/smol_ai_developer/generated_namer2/naming_scheme_generator/generator.py
+index ca72b86..e40fe2a 100644
+--- a/smol_ai_developer/generated_namer2/naming_scheme_generator/generator.py
++++ b/smol_ai_developer/generated_namer2/naming_scheme_generator/generator.py
+@@ -1,25 +1,23 @@
++import json
+ import random
+ from typing import Dict, List
+ from .themes import default_theme
+ 
+-def generate_name(theme_adjective: Dict[str, List[str]], theme_noun: Dict[str, List[str]]) -> str:
+-    letter = random.choice(list(theme_adjective.keys()))
+-    adjective = random.choice(theme_adjective[letter])
+-    noun = random.choice(theme_noun[letter])
++def generate_name(theme) -> str:
++    letter = random.choice(list(theme.keys()))
++    adjective = random.choice(theme[letter]['adjectives'])
++    noun = random.choice(theme[letter]['nouns'])
+     return f"{adjective}_{noun}"
+ 
+-def load_custom_theme(file_path: str) -> Dict[str, List[str]]:
++def load_custom_theme(file_path: str):
+     with open(file_path, "r") as file:
+         custom_theme = json.load(file)
+     return custom_theme
+ 
+ def generate_name_with_theme(theme: str = "default") -> str:
+     if theme == "default":
+-        theme_adjective = default_theme["adjectives"]
+-        theme_noun = default_theme["nouns"]
++        theme = default_theme
+     else:
+         custom_theme = load_custom_theme(theme)
+-        theme_adjective = custom_theme["adjectives"]
+-        theme_noun = custom_theme["nouns"]
+ 
+-    return generate_name(theme_adjective, theme_noun)
+\ No newline at end of file
++    return generate_name(theme)
+\ No newline at end of file
+diff --git a/smol_ai_developer/generated_namer2/naming_scheme_generator/themes/__init__.py b/smol_ai_developer/generated_namer2/naming_scheme_generator/themes/__init__.py
+index 804ae80..6e15a0a 100644
+--- a/smol_ai_developer/generated_namer2/naming_scheme_generator/themes/__init__.py
++++ b/smol_ai_developer/generated_namer2/naming_scheme_generator/themes/__init__.py
+@@ -1,2 +1,7 @@
+-from .default_theme import default_theme
+-from .custom_theme_example import custom_theme_example
+\ No newline at end of file
++import json
++
++with open("./naming_scheme_generator/themes/default_theme.json") as f:
++    default_theme = json.load(f)
++
++with open("./naming_scheme_generator/themes/custom_theme_example.json") as f:
++    custom_theme_example = json.load(f)
+diff --git a/smol_ai_developer/generated_namer2/tests/__init__.py b/smol_ai_developer/generated_namer2/tests/__init__.py
+index 07a4040..e69de29 100644
+--- a/smol_ai_developer/generated_namer2/tests/__init__.py
++++ b/smol_ai_developer/generated_namer2/tests/__init__.py
+@@ -1,2 +0,0 @@
+-from tests.test_generator import test_generate_name_default_theme, test_generate_name_custom_theme
+-from tests.test_themes import test_load_custom_theme
+\ No newline at end of file
+diff --git a/smol_ai_developer/generated_namer2/tests/test_generator.py b/smol_ai_developer/generated_namer2/tests/test_generator.py
+index bae94b8..46950a0 100644
+--- a/smol_ai_developer/generated_namer2/tests/test_generator.py
++++ b/smol_ai_developer/generated_namer2/tests/test_generator.py
+@@ -5,19 +5,19 @@ from naming_scheme_generator.themes import default_theme
+ class TestGenerator(unittest.TestCase):
+ 
+     def test_generate_name_default_theme(self):
+-        name = generate_name(default_theme.adjectives, default_theme.nouns)
++        name = generate_name(default_theme)
+         self.assertIsNotNone(name)
+         self.assertTrue(isinstance(name, str))
+-        self.assertEqual(len(name.split(" ")), 2)
+-        self.assertEqual(name.split(" ")[0][0], name.split(" ")[1][0])
++        self.assertEqual(len(name.split("_")), 2)
++        self.assertEqual(name.split("_")[0][0], name.split("_")[1][0])
+ 
+     def test_generate_name_custom_theme(self):
+         custom_theme = load_custom_theme("naming_scheme_generator/themes/custom_theme_example.json")
+-        name = generate_name(custom_theme.adjectives, custom_theme.nouns)
++        name = generate_name(custom_theme)
+         self.assertIsNotNone(name)
+         self.assertTrue(isinstance(name, str))
+-        self.assertEqual(len(name.split(" ")), 2)
+-        self.assertEqual(name.split(" ")[0][0], name.split(" ")[1][0])
++        self.assertEqual(len(name.split("_")), 2)
++        self.assertEqual(name.split("_")[0][0], name.split("_")[1][0])
+ 
+     def test_load_custom_theme(self):
+         custom_theme = load_custom_theme("naming_scheme_generator/themes/custom_theme_example.json")
+diff --git a/smol_ai_developer/generated_namer2/tests/test_themes.py b/smol_ai_developer/generated_namer2/tests/test_themes.py
+index c9b3115..274547a 100644
+--- a/smol_ai_developer/generated_namer2/tests/test_themes.py
++++ b/smol_ai_developer/generated_namer2/tests/test_themes.py
+@@ -7,33 +7,34 @@ class TestThemes(unittest.TestCase):
+ 
+     def test_load_custom_theme(self):
+         custom_theme_path = "naming_scheme_generator/themes/custom_theme_example.json"
+-        custom_theme = themes.load_custom_theme(custom_theme_path)
+-        self.assertIsInstance(custom_theme, themes.Theme)
++        custom_theme = generator.load_custom_theme(custom_theme_path)
++        self.assertIsInstance(custom_theme, dict)
+ 
+         with open(custom_theme_path, "r") as f:
+             custom_theme_data = json.load(f)
+ 
+         for letter, theme_data in custom_theme_data.items():
+-            self.assertEqual(custom_theme.adjectives[letter], theme_data["adjectives"])
+-            self.assertEqual(custom_theme.nouns[letter], theme_data["nouns"])
++            self.assertEqual(custom_theme[letter]['adjectives'], theme_data["adjectives"])
++            self.assertEqual(custom_theme[letter]['nouns'], theme_data["nouns"])
+ 
+     def test_generate_name_default_theme(self):
+         default_theme = themes.default_theme
+-        generated_name = generator.generate_name(default_theme.adjectives, default_theme.nouns)
++        generated_name = generator.generate_name(default_theme)
+         self.assertIsInstance(generated_name, str)
+-        self.assertEqual(len(generated_name.split(" ")), 2)
++        self.assertEqual(len(generated_name.split("_")), 2)
+ 
+-        adjective, noun = generated_name.split(" ")
++        adjective, noun = generated_name.split("_")
+         self.assertEqual(adjective[0], noun[0])
+ 
+     def test_generate_name_custom_theme(self):
+         custom_theme_path = "naming_scheme_generator/themes/custom_theme_example.json"
+-        custom_theme = themes.load_custom_theme(custom_theme_path)
+-        generated_name = generator.generate_name(custom_theme.adjectives, custom_theme.nouns)
++        custom_theme = generator.load_custom_theme(custom_theme_path)
++        generated_name = generator.generate_name(custom_theme)
++        print(generated_name)
+         self.assertIsInstance(generated_name, str)
+-        self.assertEqual(len(generated_name.split(" ")), 2)
++        self.assertEqual(len(generated_name.split("_")), 2)
+ 
+-        adjective, noun = generated_name.split(" ")
++        adjective, noun = generated_name.split("_")
+         self.assertEqual(adjective[0], noun[0])
+ 
+ if __name__ == "__main__":
